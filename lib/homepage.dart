@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/ball.dart';
 import 'package:flutter_application_1/button.dart';
@@ -23,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   double ballX = 0.5;
   double ballY = 1;
   var ballDirection = direction.LEFT;
-  int score = 0; // Variable para el puntaje
+  int score = 0; // Variable para la puntuación
 
   void startGame() {
     double time = 0;
@@ -117,8 +116,8 @@ class _HomePageState extends State<HomePage> {
 
         if (ballY > heightToPosition(missileHeight) && (ballX - missileX).abs() < 0.03) {
           setState(() {
-            score += 1; // Aumentar el puntaje al golpear la pelota
-            ballX = 5;
+            score += 1; // Aumentar la puntuación
+            ballX = 0;  // Reiniciar la posición de la pelota
           });
           resetMissile();
           timer.cancel();
@@ -169,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                   Positioned(
                     top: 20,
                     child: Text(
-                      'Puntuación: ',
+                      'Puntuación: $score', // Muestra la puntuación
                       style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                   ),
